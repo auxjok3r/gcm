@@ -81,6 +81,7 @@ class GcmChannel
                 'title' => $message->title,
                 'body' => $message->message,
                 'sound' => $message->sound,
+                'click_action' => 'FCM_PLUGIN_ACTIVITY',
             ] + $message->data);
 
         return $packet;
