@@ -77,13 +77,14 @@ class GcmChannel
                 'title' => $message->title,
                 'message' => $message->message,
             ] + $message->data);
-        $packet->setNotification([
-                'title' => $message->title,
-                'body' => $message->message,
-                'sound' => $message->sound,
-                'click_action' => 'FCM_PLUGIN_ACTIVITY',
-            ] + $message->data);
-
+        if ($message->message) {
+            $packet->setNotification([
+                    'title' => $message->title,
+                    'body' => $message->message,
+                    'sound' => $message->sound,
+                    'click_action' => 'FCM_PLUGIN_ACTIVITY',
+                ] + $message->data);
+        }
         return $packet;
     }
 
